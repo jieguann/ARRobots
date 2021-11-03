@@ -35,6 +35,10 @@ public class RobotMovement : MonoBehaviour
         }
 
         //Rotation of the Robot
-        Vector3 targetDiraction = new Vector3(joystick.Direction.x, 0, joystick.Direction.y);
+        Vector3 targetDirection = new Vector3(joystick.Direction.x, 0, joystick.Direction.y);
+
+        Vector3 direction = Vector3.RotateTowards(transform.forward, targetDirection, turnSpeed*Time.deltaTime, 0.0f);
+
+        transform.rotation = Quaternion.LookRotation(direction);
     }
 }
